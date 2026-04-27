@@ -21,39 +21,19 @@ const { connect } = require('./db/connection');
   const db = await connect();
 
   // OPTIONAL: clear existing data so re-seeding is idempotent
-  // await db.collection('users').deleteMany({});
-  // await db.collection('projects').deleteMany({});
-  // await db.collection('tasks').deleteMany({});
-  // await db.collection('notes').deleteMany({});
+  await db.collection('users').deleteMany({});
+  await db.collection('projects').deleteMany({});
+  await db.collection('tasks').deleteMany({});
+  await db.collection('notes').deleteMany({});
 
-  // =============================================================================
-  //  TODO: Insert your seed data below.
-  //
-  //  Hints:
-  //    - Hash passwords:   const hash = await bcrypt.hash('password123', 10);
-  //    - Capture inserted ids:
-  //        const u = await db.collection('users').insertOne({ ... });
-  //        const userId = u.insertedId;
-  //    - Use those ids when inserting projects/tasks/notes.
-  //    - Demonstrate schema flexibility: include at least one optional field
-  //      on SOME documents but not all (e.g. dueDate on some tasks only).
-  //
-  //  Sample task shape:
-  //    {
-  //      ownerId: <ObjectId>,
-  //      projectId: <ObjectId>,
-  //      title: "Write report introduction",
-  //      status: "todo",
-  //      priority: 3,
-  //      tags: ["writing", "urgent"],
-  //      subtasks: [
-  //        { title: "Outline sections", done: true },
-  //        { title: "Draft", done: false }
-  //      ],
-  //      createdAt: new Date()
-  //    }
-  // =============================================================================
+  const saltRounds = 10;
+  const hash = await bcrypt.hash('password123', saltRounds);
+
 
   console.log('TODO: implement seed.js');
   process.exit(0);
 })();
+
+
+
+
