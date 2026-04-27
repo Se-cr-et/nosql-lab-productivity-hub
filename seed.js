@@ -61,7 +61,60 @@ const { connect } = require('./db/connection');
     name: "Cow in the woods", ownerId: BobID, archived: true, createdAt: new Date()
   });
 
-
+  await db.collection('tasks').insertMany([
+    {
+      ownerId: CowID,
+      projectId: pro1.insertedId,
+      title: "Implement MongoDB for cows",
+      status: "in-progress",
+      priority: 1,
+      tags: ["db", "urgent"],
+      subtasks: [{ title: "Write seed.js", done: true }, { title: "Test aggregation", done: false }],
+      dueDate: new Date('2026-05-01'),
+      createdAt: new Date()
+    },
+    {
+      ownerId: CowID,
+      projectId: pro2.insertedId,
+      title: "Design UI, cow friendly",
+      status: "todo",
+      priority: 2,
+      tags: ["ui"],
+      subtasks: [],
+      createdAt: new Date()
+    },
+    {
+      ownerId: BobID,
+      projectId: pro3.insertedId,
+      title: "Buy Paint",
+      status: "done",
+      priority: 3,
+      tags: ["shopping"],
+      subtasks: [{ title: "Choose colors", done: true }],
+      createdAt: new Date()
+    },
+    {
+      ownerId: BobID,
+      projectId: pro3.insertedId,
+      title: "Cow Labor",
+      status: "todo",
+      priority: 1,
+      tags: ["manual-labor"],
+      subtasks: [],
+      dueDate: new Date('2026-06-15'),
+      createdAt: new Date()
+    },
+    {
+      ownerId: CowID,
+      projectId: pro4.insertedId,
+      title: "Review",
+      status: "todo",
+      priority: 4,
+      tags: ["team"],
+      subtasks: [],
+      createdAt: new Date()
+    }
+  ]);
 
   console.log('TODO: implement seed.js');
   process.exit(0);
