@@ -116,6 +116,48 @@ const { connect } = require('./db/connection');
     }
   ]);
 
+await db.collection('notes').insertMany([
+    {
+      title: "Keys",
+      body: "Keep the secrets",
+      ownerId: CowID,
+      projectId: pro1.insertedId,
+      tags: ["security"],
+      pinned: true,
+      createdAt: new Date()
+    },
+    {
+      title: "General Thoughts",
+      body: "Mongo is different from SQL",
+      ownerId: CowID,
+      tags: ["reflection"],
+      createdAt: new Date()
+    },
+    {
+      title: "Shopping List",
+      body: "Hammer, nails, and a cow",
+      ownerId: BobID,
+      projectId: pro3.insertedId,
+      tags: ["tools"],
+      createdAt: new Date()
+    },
+    {
+      title: "Morning Routine",
+      body: "Wake up, coffee, code and die",
+      ownerId: BobID,
+      tags: ["personal"],
+      createdAt: new Date()
+    },
+    {
+      title: "Old Notes",
+      body: "Do not touch the car engine",
+      ownerId: BobID,
+      projectId: pro4.insertedId,
+      tags: ["warning"],
+      createdAt: new Date()
+    }
+  ]);
+
   console.log('TODO: implement seed.js');
   process.exit(0);
 })();
