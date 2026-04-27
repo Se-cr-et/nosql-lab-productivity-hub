@@ -32,7 +32,7 @@ const { connect } = require('./db/connection');
 
     const user1 = await db.collection('users').insertOne({
     name: "Cow",
-    email: "cow@gmail.com",
+    email: "cow@example.com",
     passwordHash: hash,
     createdAt: new Date()
   });
