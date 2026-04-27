@@ -47,6 +47,22 @@ const { connect } = require('./db/connection');
   const CowID = user1.insertedId;
   const BobID = user2.insertedId;
 
+
+    const pro1 = await db.collection('projects').insertOne({
+    name: "Productivity Hub", ownerId: CowID, archived: false, createdAt: new Date()
+  });
+  const pro2 = await db.collection('projects').insertOne({
+    name: "Mobile App", ownerId: CowID, archived: false, createdAt: new Date()
+  });
+  const pro3 = await db.collection('projects').insertOne({
+    name: "House Rebuild", ownerId: BobID, archived: false, createdAt: new Date()
+  });
+  const pro4 = await db.collection('projects').insertOne({
+    name: "Cow in the woods", ownerId: BobID, archived: true, createdAt: new Date()
+  });
+
+
+
   console.log('TODO: implement seed.js');
   process.exit(0);
 })();
