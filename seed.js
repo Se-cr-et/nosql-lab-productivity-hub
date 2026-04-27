@@ -30,6 +30,23 @@ const { connect } = require('./db/connection');
   const hash = await bcrypt.hash('password123', saltRounds);
 
 
+    const user1 = await db.collection('users').insertOne({
+    name: "Cow",
+    email: "cow@gmail.com",
+    passwordHash: hash,
+    createdAt: new Date()
+  });
+
+  const user2 = await db.collection('users').insertOne({
+    name: "Bob the Builder",
+    email: "bob@gmail.com",
+    passwordHash: hash,
+    createdAt: new Date()
+  });
+
+  const CowID = user1.insertedId;
+  const BobID = user2.insertedId;
+
   console.log('TODO: implement seed.js');
   process.exit(0);
 })();
