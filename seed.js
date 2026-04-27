@@ -27,7 +27,7 @@ const { connect } = require('./db/connection');
   await db.collection('notes').deleteMany({});
 
   const saltRounds = 10;
-  const hash = await bcrypt.hash('password123', saltRounds);
+  const hash = await bcrypt.hash('1234', saltRounds);
 
 
     const user1 = await db.collection('users').insertOne({
