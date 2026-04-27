@@ -312,8 +312,7 @@ async function toggleSubtask(db, taskId, subtaskTitle, newDone) {
  * Hint: deleteOne.
  */
 async function deleteTask(db, taskId) {
-  // TODO: implement
-  throw new Error('deleteTask not implemented');
+  return await db.collection("tasks").deleteOne({ _id: taskId });
 }
 
 /**
