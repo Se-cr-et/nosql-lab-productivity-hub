@@ -189,8 +189,17 @@ async function listProjectTasks(db, projectId, status) {
  * Hint: insertOne. Apply defaults for any missing optional fields.
  */
 async function createTask(db, taskData) {
-  // TODO: implement
-  throw new Error('createTask not implemented');
+  const newTask = {
+      ownerId: taskData.ownerId,
+      projectId: taskData.projectId,
+      title: taskData.title,
+      priority: taskData.priority || 1,
+      tags: taskData.tags || [],
+      subtasks: taskData.subtasks || [],
+      status: "todo",
+      createdAt: new Date()
+    };
+    return await db.collection("tasks").insertOne(newTask);
 }
 
 /**
