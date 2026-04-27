@@ -27,20 +27,20 @@ const { connect } = require('./db/connection');
   await db.collection('notes').deleteMany({});
 
   const saltRounds = 10;
-  const hash = await bcrypt.hash('1234', saltRounds);
+  const hashman = await bcrypt.hash('1234567', saltRounds);
 
 
     const user1 = await db.collection('users').insertOne({
     name: "Cow",
-    email: "cow@example.com",
-    passwordHash: hash,
+    email: "cow@gmail.com",
+    passwordHash: hashman,
     createdAt: new Date()
   });
 
   const user2 = await db.collection('users').insertOne({
     name: "Bob the Builder",
     email: "bob@gmail.com",
-    passwordHash: hash,
+    passwordHash: hashman,
     createdAt: new Date()
   });
 
